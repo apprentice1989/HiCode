@@ -15,7 +15,7 @@ from json import dumps as json_encode
 
 from weicode import init, setting
 
-app = init('conf/development.yaml')
+app = init(os.getenv('WEICODE_CONFIG', 'conf/development.yaml'))
 
 @app.route('/static/<path:filename>')
 def static(filename):
