@@ -72,7 +72,6 @@ def validate(args):
 
     args['lexer'] = setting['langs'][args['lang']][0]
 
-    print args
     return args
 
 # vim: ts=4 sw=4 ai et st=4
