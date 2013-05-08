@@ -14,6 +14,7 @@ from weicode.image import generate_image
 from json import dumps as json_encode
 
 from weicode import init, setting
+import os
 
 app = init(os.getenv('WEICODE_CONFIG', 'conf/development.yaml'))
 
