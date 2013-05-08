@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta property="wb:webmaster" content="3adfe69d0649fffb" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{{ setting.site_url }}static/css/bootstrap.css" />
+        <link rel="stylesheet" href="{{ setting.site_url }}static/css/bootstrap-responsive.css" />
+        <link rel="stylesheet" href="{{ setting.site_url }}static/css/auth-buttons.css" />
+        <link rel="stylesheet" href="{{ setting.site_url }}static/css/footer.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey={{ setting.weibo_api_key }}" type="text/javascript" charset="utf-8"></script>
+        <title>{% block page_title %} {% endblock %}</title>
+        {% block header %}{% endblock %}
+    </head>
+
+    <body>
+        <div id="wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="span1"></div>
+	                <div id="content" class="span10">
+                        {% block content %}{% endblock %}
+	                </div>
+                    <div class="span1"></div>
+                </div>
+            </div>
+            <div id="push"></div>
+        </div>
+
+        <div id="footer">
+            <div class="container text-center">
+                <p class="muted credit">
+                    <a href="http://github.com/jianingy/">Jianing YANG, 2013</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="http://code.jquery.com/jquery-1.9.1.js" ></script>
+        <script src="{{ setting.site_url }}static/js/jquery-ui-1.10.3.custom.min.js" ></script>
+        <script src="{{ setting.site_url }}static/js/bootstrap.min.js"></script>
+        {% block javascript %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .code-input {width: 99%; margin-top: 12px;}
+    .formatted {margin-top: 12px; border: 1px dotted #ccc}
+    .label-row label {margin-left: 2px }
+</style>
+<div class="page-header">
+    <h1>Share your code <small>with 新浪微博</small></h1>
+</div>
+{% if image_url %}
+<div class="hero-unit">
+    <div class="btn-group">
+        <a href="#form" class="btn btn">Edit</a>
+        <a href="{{setting.site_url}}/{{ image_url }}" class="btn">Link</a>
+        <a href="javascript:weibo();" class="btn"><i><img src='http://open.weibo.com/favicon.ico' width=16/></i> 发布到微博</a>
+    </div>
+    <p class="formatted">
+        <img src="{{image_url}}" />
+    </p>
+</div>
+{% endif %}
+<a id="form"></a>
+<form class="" action="/" method="POST">
+    <div class="controls controls-row label-row">
+        <label for="lang" class="span3">Language</label>
+        <label for="style" class="span2">Style</label>
+        <label for="font_name" class="span2">Font</label>
+        <label for="font_size" class="span1">Size</label>
+    </div>
+    <div class="controls controls-row">
+        <input type="text" placeholder="Language" id="lang" name="lang" value="{{ lang }}" class="span3"/>
+
+        <select name="style" class="span2">
+            {% for style_ in setting.styles: %}
+            <option value="{{ style_ }}" {% if style == style_ %} selected="selected" {% endif %} > {{ style_ }} </option>
+            {% endfor %}
+        </select>
+        <select name="font_name" class="span2">
+            {% for font in setting.font_name: %}
+            <option value="{{ font }}" {% if font == font_name %} selected="selected" {% endif %} > {{ font }} </option>
+            {% endfor %}
+        </select>
+        <select name="font_size" class="span1">
+            {% for size in setting.font_size: %}
+            <option value="{{ size }}" {% if size == font_size %} selected="selected" {% endif %}> {{ size }} </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" class="btn btn-primary span2">Generate</button>
+    </div>
+    <textarea name="code" rows="10" class="code-input">{{ code }}</textarea>
+</form>
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+  $(function() {
+    $( "#lang" ).autocomplete({
+      source: '/lang'
+    });
+  });
+
+function weibo() {
+WB2.anyWhere(function(W){
+    W.widget.publish({
+        toolbar:"face,topic",
+        button_type:"red",
+        button_size:"middle",
+        default_text:"",
+        default_image:"{{ setting.site_url }}/{{ image_url }}",
+        id: "wb_publisher"
+    });
+});
+}
+
+</script>
+{% endblock %}
