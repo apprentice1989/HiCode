@@ -7,7 +7,7 @@
 
 __author__ = 'Jianing Yang <jianingy.yang AT gmail DOT com>'
 
-from weicode import setting
+from hicode import setting
 from pygments import highlight
 from pygments.formatters import ImageFormatter
 from pygments.lexers import get_lexer_by_name
