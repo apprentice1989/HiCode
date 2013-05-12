@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# filename   : weicode.py
+# filename   : service.py
 # created at : 2013-05-07 11:25:03
 # author     : Jianing Yang <jianingy.yang AT gmail DOT com>
 
@@ -10,10 +10,10 @@ __author__ = 'Jianing Yang <jianingy.yang AT gmail DOT com>'
 from flask import send_from_directory
 from flask import render_template
 from flask import request
-from weicode.image import generate_image
+from hicode.image import generate_image
 from json import dumps as json_encode
 
-from weicode import init, setting
+from hicode import init, setting
 import os
 
 app = init(os.getenv('WEICODE_CONFIG', 'conf/development.yaml'))

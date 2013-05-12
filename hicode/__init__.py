@@ -41,7 +41,7 @@ def init(cfg):
     from yaml import load as yaml_load
     from jinja2 import FileSystemLoader
     from os.path import join as path_join, exists
-    from weicode import setting
+    from hicode import setting
     from pygments.lexers import get_all_lexers
     from pygments.styles import get_all_styles
 
@@ -52,7 +52,7 @@ def init(cfg):
     setting['styles'] = list(get_all_styles())
     setting['langs'] = dict(map(lambda x: (x[0], x[1]), get_all_lexers()))
 
-    app = Flask('weicode')
+    app = Flask('hicode')
     app.jinja_loader = FileSystemLoader(setting['template_directory'])
     app.debug = setting['debug']
 
